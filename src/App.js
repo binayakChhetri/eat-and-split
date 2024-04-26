@@ -30,12 +30,6 @@ function Button({ children, onClick }) {
 }
 
 export default function App() {
-  // Making state for add new friend
-  const [showAddFriend, setShowAddFriend] = useState(false);
-  function handleShowAddFriend() {
-    setShowAddFriend((value) => !value);
-  }
-
   // Updating the state when we click the add in the add friend section
   const [friends, setfriends] = useState(initialFriends);
   function handleSetFriends(friend) {
@@ -43,6 +37,11 @@ export default function App() {
     handleShowAddFriend();
   }
 
+  // Making state for add new friend
+  const [showAddFriend, setShowAddFriend] = useState(false);
+  function handleShowAddFriend() {
+    setShowAddFriend((show) => !show);
+  }
   // State for slecting the friend
   const [selectedFriend, setSelectFriend] = useState(null);
   function handleSelection(friend) {
@@ -53,7 +52,6 @@ export default function App() {
   }
 
   function handleSplitBill(value) {
-    console.log(value);
     setfriends((friends) =>
       friends.map((friend) =>
         friend.id === selectedFriend.id
@@ -84,6 +82,7 @@ export default function App() {
         <FormSplitBill
           selectedFriend={selectedFriend}
           onSplitBill={handleSplitBill}
+          key={selectedFriend.id}
         />
       )}
     </div>
@@ -195,7 +194,7 @@ function FormSplitBill({ selectedFriend, onSplitBill }) {
   }
 
   return (
-    <form className="form-split-bill" onClick={handleSubmit}>
+    <form className="form-split-bill" onSubmit={handleSubmit}>
       <h2>SPLIT A BILL WITH {selectedFriend.name}</h2>
 
       <label htmlFor="bill-value">💰 Bill value</label>
