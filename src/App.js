@@ -134,7 +134,6 @@ function Friend({ friend, selectedFriend, onSelection }) {
 function FormAddFriend({ handleSetFriends }) {
   const [name, setName] = useState("");
 
-  // State variable for image URL
   const [image, setImage] = useState("https://i.pravatar.cc/48");
 
   function handleSubmit(e) {
