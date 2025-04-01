@@ -132,7 +132,6 @@ function Friend({ friend, selectedFriend, onSelection }) {
 }
 
 function FormAddFriend({ handleSetFriends }) {
-  // State variable for friend name
   const [name, setName] = useState("");
 
   // State variable for image URL
